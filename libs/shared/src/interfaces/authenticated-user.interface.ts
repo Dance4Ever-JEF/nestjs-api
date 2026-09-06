@@ -1,5 +1,6 @@
 export interface AuthenticatedUser{
   id: number,
   name: string,
-  email: string
+  email: string,
+  isAdmin: boolean
 }

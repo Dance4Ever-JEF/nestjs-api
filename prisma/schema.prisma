@@ -12,10 +12,10 @@ model User {
   name      String
   email     String   @unique
   password  String
+  isAdmin   Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  events    Event[]
   tickets   Ticket[]
 }
 
@@ -30,15 +30,14 @@ model Event {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  organizerId Int
-  organizer   User     @relation(fields: [organizerId], references: [id])
-
   tickets     Ticket[]
 }
 
 model Ticket {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
+  used      Boolean  @default(false)
+  halfPrice Boolean   @default(false)
 
   eventId   Int
   event     Event    @relation(fields: [eventId], references: [id])

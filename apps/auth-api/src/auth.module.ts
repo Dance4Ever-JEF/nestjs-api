@@ -9,7 +9,10 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     DatabaseModule,
-    TokenModule
+    AuthModule,
+
+    TokenModule,
+    
   ],
   controllers: [],
   providers: [

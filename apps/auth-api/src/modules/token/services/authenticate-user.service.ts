@@ -22,7 +22,8 @@ export class AuthenticateUserService{
         id: true,
         name: true,
         email: true,
-        password: true
+        password: true,
+        isAdmin: true
       }
     });
 
@@ -35,7 +36,8 @@ export class AuthenticateUserService{
     const payload: AuthenticatedUser = {
       id: user.id,
       name: user.name,
-      email: user.email
+      email: user.email,
+      isAdmin: user.isAdmin
     };
 
     return {
