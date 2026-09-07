@@ -1,11 +1,11 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
-import { PrismaService } from "libs/shared/src";
+import { EventStatusEnum, PrismaService } from "libs/shared/src";
 import { CreateEventInputDTO, CreateEventOutputDTO } from "../dto";
 
 @Injectable()
 export class CreateEventService{
   constructor(
-    private readonly prismaService: PrismaService
+    private readonly prismaService: PrismaService,
   ){}
 
   public async execute(
@@ -21,6 +21,7 @@ export class CreateEventService{
         location,
         capacity,
         price,
+        status: EventStatusEnum.DRAFT
       },
       select: {
         id: true,
@@ -30,6 +31,7 @@ export class CreateEventService{
         location: true,
         capacity: true,
         price: true,
+        status: true,
         createdAt: true,
         updatedAt: true,
       },
@@ -37,6 +39,7 @@ export class CreateEventService{
 
     return {
       ...event,
+      status: event.status as EventStatusEnum,
       price: Number(event.price),
     };
   }

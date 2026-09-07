@@ -1,8 +1,8 @@
 import { BullModule } from "@nestjs/bullmq";
 import { Module } from "@nestjs/common";
 import { DatabaseModule } from "libs/shared/src";
-import { JoinQueueController } from "./controllers";
-import { JoinQueueService } from "./services";
+import { GetQueuePositionController, JoinQueueController } from "./controllers";
+import { ExpireAdmittedService, GetQueuePositionService, JoinQueueService, ProcessQueueService, StartQueueProcessingService, StopQueueProcessingService  } from "./services";
 
 @Module({
   imports: [
@@ -14,9 +14,19 @@ import { JoinQueueService } from "./services";
   ],
   controllers: [
     JoinQueueController,
+    GetQueuePositionController,
   ],
   providers: [
-    JoinQueueService
+    JoinQueueService,
+    GetQueuePositionService,
+    ProcessQueueService,
+    ExpireAdmittedService,
+    StartQueueProcessingService,
+    StopQueueProcessingService,
+  ],
+  exports: [
+    StartQueueProcessingService,
+    StopQueueProcessingService,
   ]
 })
 export class QueueModule{}

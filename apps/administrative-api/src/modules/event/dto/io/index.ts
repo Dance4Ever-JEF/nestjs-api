@@ -6,3 +6,5 @@ export * from "./find-event-by-id-input.dto";
 export * from "./find-event-by-id-output.dto";
 export * from "./update-event-input.dto";
 export * from "./update-event-output.dto";
+export * from "./update-event-status-input.dto";
+export * from "./update-event-status-output.dto";

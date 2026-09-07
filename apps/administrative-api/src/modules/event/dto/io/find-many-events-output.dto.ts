@@ -1,3 +1,5 @@
+import { EventStatusEnum } from "libs/shared/src";
+
 export type FindManyEventsOutputDTO = {
   events: EventOutputDTO[];
   totalCount: number;
@@ -11,4 +13,5 @@ export type EventOutputDTO = {
   location: string;
   capacity: number;
   price: number;
+  status: EventStatusEnum;
 };

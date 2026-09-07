@@ -1,3 +1,5 @@
+import { EventStatusEnum } from "libs/shared/src"
+
 export type FindEventByIdOutputDTO = {
   id: number,
   title: string,
@@ -6,6 +8,7 @@ export type FindEventByIdOutputDTO = {
   location: string,
   capacity: number,
   price: number,
+  status: EventStatusEnum,
   createdAt: Date,
   updatedAt: Date
 }

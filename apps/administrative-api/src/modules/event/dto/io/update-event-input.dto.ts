@@ -5,5 +5,5 @@ export type UpdateEventInputDTO = {
   date?: Date,
   location?: string,
   capacity?: number,
-  price?: number
+  price?: number,
 }

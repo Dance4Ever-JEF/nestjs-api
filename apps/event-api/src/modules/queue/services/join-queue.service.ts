@@ -7,7 +7,7 @@ import { randomUUID } from "crypto";
 export class JoinQueueService{
   constructor(
     private readonly prismaService: PrismaService,
-    private readonly redisService: RedisService
+    private readonly redisService: RedisService,
   ){}
 
   public async execute(
@@ -44,7 +44,7 @@ export class JoinQueueService{
     return {
       queueId,
       eventId,
-      status: QueueStatusEnum.WAITING,
+      status: QueueStatusEnum[1],
     };
   }
 }

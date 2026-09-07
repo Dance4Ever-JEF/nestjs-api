@@ -1,4 +1,4 @@
-import { PrismaService } from "libs/shared/src";
+import { EventStatusEnum, PrismaService } from "libs/shared/src";
 import { FindManyEventsInputDTO, FindManyEventsOutputDTO } from "../dto";
 import { Injectable } from "@nestjs/common";
 
@@ -33,6 +33,7 @@ export class FindManyEventsService{
             location: true,
             capacity: true,
             price: true,
+            status: true,
           }
       }),
       this.prismaService.event.count({
@@ -50,6 +51,7 @@ export class FindManyEventsService{
     return {
       events: events.map((event) => ({
         ...event,
+        status: event.status as EventStatusEnum,
         price: Number(event.price),
       })),
       totalCount

@@ -1,7 +1,13 @@
 import { Type } from "class-transformer";
-import { IsDate, IsInt, IsNumber, IsOptional, IsString } from "class-validator";
+import {
+  IsDate,
+  IsInt,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from "class-validator";
 
-export class UpdateEventRequestDTO{
+export class UpdateEventRequestDTO {
   @IsOptional()
   @IsString()
   title?: string;

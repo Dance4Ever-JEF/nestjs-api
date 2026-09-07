@@ -1,3 +1,5 @@
+import { EventStatusEnum } from "libs/shared/src"
+
 export type CreateEventOutputDTO = {
   id: number,
   title: string,
@@ -6,6 +8,7 @@ export type CreateEventOutputDTO = {
   location: string,
   capacity: number,
   price: number,
+  status: EventStatusEnum,
   createdAt: Date,
   updatedAt: Date
 }

@@ -7,6 +7,14 @@ datasource db {
   provider = "postgresql"
 }
 
+enum EventStatus {
+  DRAFT
+  SALE_OPEN
+  SALE_CLOSED
+  FINISHED
+  CANCELLED
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   name      String
@@ -27,6 +35,7 @@ model Event {
   location    String
   capacity    Int
   price       Decimal  @db.Decimal(10, 2)
+  status      EventStatus @default(DRAFT)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 

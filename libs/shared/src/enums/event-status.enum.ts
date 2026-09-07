@@ -1,0 +1,7 @@
+export enum EventStatusEnum {
+  DRAFT = "DRAFT",
+  SALE_OPEN = "SALE_OPEN",
+  SALE_CLOSED = "SALE_CLOSED",
+  FINISHED = "FINISHED",
+  CANCELLED = "CANCELLED",
+}

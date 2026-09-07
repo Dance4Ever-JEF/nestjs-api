@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { PrismaService } from "libs/shared/src";
+import { EventStatusEnum, PrismaService } from "libs/shared/src";
 import { UpdateEventInputDTO, UpdateEventOutputDTO } from "../dto";
 
 @Injectable()
@@ -33,6 +33,7 @@ export class UpdateEventService {
         location: true,
         capacity: true,
         price: true,
+        status: true,
         createdAt: true,
         updatedAt: true,
       },
@@ -40,6 +41,7 @@ export class UpdateEventService {
 
     return {
       ...updatedEvent,
+      status: event.status as EventStatusEnum,
       price: Number(updatedEvent.price)
     };
   }
