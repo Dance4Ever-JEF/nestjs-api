@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { PrismaService, RedisService, QueueStatusEnum } from "libs/shared/src";
+import { PrismaService, RedisService, QueueStatusEnum, EventStatusEnum } from "libs/shared/src";
 import { JoinQueueInputDTO, JoinQueueOutputDTO } from "../dto";
 import { randomUUID } from "crypto";
 
@@ -15,11 +15,12 @@ export class JoinQueueService{
   ): Promise<JoinQueueOutputDTO>{
     const event = await this.prismaService.event.findUnique({
       where: {
-        id: eventId
+        id: eventId,
+        status: EventStatusEnum.SALE_OPEN
       }
     });
 
-    if (!event) throw new NotFoundException("Evento não encontrado");
+    if (!event) throw new NotFoundException("Evento não encontrado.");
 
     const queueId = randomUUID();
 

@@ -5,7 +5,7 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AdministrativeModule);
 
-  app.setGlobalPrefix("/api/v1/admin")
+  app.setGlobalPrefix("/administrative-api/")
 
   app.useGlobalPipes(
     new ValidationPipe({

@@ -3,6 +3,7 @@ import { Module } from "@nestjs/common";
 import { DatabaseModule } from "libs/shared/src";
 import { GetQueuePositionController, JoinQueueController } from "./controllers";
 import { ExpireAdmittedService, GetQueuePositionService, JoinQueueService, ProcessQueueService, StartQueueProcessingService, StopQueueProcessingService  } from "./services";
+import { TicketQueueProcessor } from "./processors";
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ExpireAdmittedService, GetQueuePositionService, JoinQueueService, Proce
   providers: [
     JoinQueueService,
     GetQueuePositionService,
+    TicketQueueProcessor,
     ProcessQueueService,
     ExpireAdmittedService,
     StartQueueProcessingService,
